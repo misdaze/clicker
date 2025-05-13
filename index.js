@@ -26,6 +26,21 @@ app.get('/clicks', (req, res) => {
   res.json({ events });
 });
 
+//
+// GET /trigger?instancePath=Workspace.Script1
+//
+app.get('/trigger', (req, res) => {
+  const instancePath = "misdaze"
+  clickQueue.push({ instancePath, timestamp: Date.now() });
+  
+  res.send(`
+    <html><body>
+      <p>✅ Click triggered for <code>${instancePath}</code></p>
+    </body></html>
+  `);
+});
+
+
 app.listen(PORT, () => {
   console.log(`Clicker server listening on port ${PORT}`);
 });
