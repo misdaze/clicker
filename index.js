@@ -30,7 +30,11 @@ app.get('/clicks', (req, res) => {
 // GET /trigger?instancePath=Workspace.Script1
 //
 app.get('/trigger', (req, res) => {
-  const instancePath = "misdaze"
+  const instancePath = req.query.instancePath;
+  if (!instancePath) {
+    return res.status(400).send('Missing instancePath');
+  }
+
   clickQueue.push({ instancePath, timestamp: Date.now() });
   
   res.send(`
