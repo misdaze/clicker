@@ -34,7 +34,14 @@ app.get('/trigger', (req, res) => {
   if (!instancePath) {
     return res.status(400).send('Missing instancePath');
   }
+
   clickQueue.push({ instancePath, timestamp: Date.now() });
+  
+  res.send(`
+    <html><body>
+      <p>gave zinnia a click!! :3</p>
+    </body></html>
+  `);
 });
 
 
