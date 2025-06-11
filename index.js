@@ -26,9 +26,7 @@ app.get('/clicks', (req, res) => {
   res.json({ events });
 });
 
-//
-// GET /trigger?instancePath=Workspace.Script1
-//
+// path to instance, will connect to plugin and play the sound
 app.get('/trigger', (req, res) => {
   const instancePath = req.query.instancePath;
   if (!instancePath) {
